@@ -1,15 +1,14 @@
 import React from 'react';
+import Navigation from './Components/Nav';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const App = () => {
-   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>COVID-19</h1>
-        <p>here is some text</p>
-      </header>
-    </div>
-  );
-}
+	return (
+		<div class="app-container">
+			<Navigation />
+		</div>
+	);
+};
 
 export default App;
