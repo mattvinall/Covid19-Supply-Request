@@ -5,7 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 const App = () => {
 	return (
-		<div class="app-container">
+		<div className="app-container">
 			<Navigation />
 		</div>
 	);
