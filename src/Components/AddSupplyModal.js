@@ -1,12 +1,13 @@
 import _ from 'lodash'
 import React from 'react'
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import AddSupplyForm from './AddSupplyForm.js'
+import { Button, Modal, Form } from 'semantic-ui-react'
 
 const AddSupplyModal = () => (
   <Modal trigger={<Button>+</Button>}>
     <Modal.Header>Add Supplies</Modal.Header>
     <Modal.Content scrolling>
-        
+        <AddSupplyForm />
       {/* <Modal.Description>
         <Header>Modal Header</Header>
         <p>
@@ -14,6 +15,8 @@ const AddSupplyModal = () => (
           dimmer to scroll
         </p>
       </Modal.Description> */}
+
+      
     </Modal.Content>
     <Modal.Actions>
       <Button primary>
