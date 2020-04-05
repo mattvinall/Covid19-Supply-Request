@@ -4,7 +4,7 @@ import AddSupplyForm from './AddSupplyForm.js'
 import { Button, Modal, Form } from 'semantic-ui-react'
 
 const AddSupplyModal = () => (
-  <Modal trigger={<Button>+</Button>}>
+  <Modal trigger={<Button>Request Supplies</Button>}>
     <Modal.Header>Add Supplies</Modal.Header>
     <Modal.Content scrolling>
         <AddSupplyForm />
