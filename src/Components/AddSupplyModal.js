@@ -3,30 +3,24 @@ import React from 'react'
 import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 
 const AddSupplyModal = () => (
-  <Modal trigger={<Button>Scrolling Content Modal</Button>}>
-    <Modal.Header>Profile Picture</Modal.Header>
-    <Modal.Content image scrolling>
-      <Image size='medium' src='/images/wireframe/image.png' wrapped />
-
-      <Modal.Description>
+  <Modal trigger={<Button>+</Button>}>
+    <Modal.Header>Add Supplies</Modal.Header>
+    <Modal.Content scrolling>
+        
+      {/* <Modal.Description>
         <Header>Modal Header</Header>
         <p>
           This is an example of expanded content that will cause the modal's
           dimmer to scroll
         </p>
-
-        {_.times(8, (i) => (
-          <Image
-            key={i}
-            src='/images/wireframe/paragraph.png'
-            style={{ paddingBottom: 5 }}
-          />
-        ))}
-      </Modal.Description>
+      </Modal.Description> */}
     </Modal.Content>
     <Modal.Actions>
       <Button primary>
-        Proceed <Icon name='chevron right' />
+        Submit
+      </Button>
+      <Button cancel>
+        Cancel
       </Button>
     </Modal.Actions>
   </Modal>
