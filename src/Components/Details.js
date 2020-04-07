@@ -21,7 +21,7 @@ class Details extends Component {
 	render() {
 		return (
 			<Container>
-				<Header as="h3" content="Sunnybrooke Hospital" textAlign="left" color="white" />
+				<Header as="h3" content="" textAlign="left" color="white" />
 				<Segment>
 					<Grid>
 						<Grid.Row style={{ display: 'flex' }}>
