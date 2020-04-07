@@ -47,8 +47,8 @@ class Navigation extends Component {
 										value={this.state.searchTerm}
 										onChange={this.handleChange}
 										fluid
-										label="search"
-										placeholder="search items"
+										label="Search"
+										placeholder="Search Item"
 									/>
 								</Form>
 							</Grid.Column>
