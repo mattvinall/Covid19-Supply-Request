@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Nav';
 import List from './Components/List';
+import Details from './Components/Details';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -51,9 +52,9 @@ class App extends Component {
 		return (
 			<div className="app-container flex-column">
 				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
-				<Container className="col-xs-12 col-lg-4">
-					<List data={this.state.data} />
-					{/* <Details />/ */}
+				<Container>
+					<List className="col-xs-4 col-lg-4" data={this.state.data} />
+					<Details className="col-xs-4 col-lg-8" />
 				</Container>
 			</div>
 		);
