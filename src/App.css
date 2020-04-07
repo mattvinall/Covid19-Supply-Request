@@ -18,3 +18,31 @@
 	display: flex;
 	justify-content: space-around;
 }
+
+.col-xs-12 {
+	width: 100%;
+}
+
+.col-lg-4 {
+	width: 33.33%;
+}
+
+.col-lg-8 {
+	width: 66.66%;
+}
+
+.item-border {
+	border-bottom: 1px solid #bcbec0 !important;
+	padding-bottom: 10px !important;
+}
+
+.border-right {
+	padding-right: 1px solid #bcbec0 !important;
+}
+
+.ui.items > .item .meta {
+	margin: 0 0 10px 0 !important;
+	font-size: 1em;
+	line-height: 1em;
+	color: rgba(0, 0, 0, .6);
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Nav';
-import Services from './Components/Services';
-// import FormModal from './Components/FormModal';
+import List from './Components/List';
+import { Container } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import firebase from './firebase';
@@ -50,8 +50,11 @@ class App extends Component {
 	render() {
 		return (
 			<div className="app-container flex-column">
-				<Navigation date={this.state.data} updateSearchTerm={this.updateSearchTerm} />
-				<Services data={this.state.data} />
+				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
+				<Container className="col-xs-12 col-lg-4">
+					<List data={this.state.data} />
+					{/* <Details />/ */}
+				</Container>
 			</div>
 		);
 	}

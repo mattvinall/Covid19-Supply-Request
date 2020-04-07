@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Icon, Header, Grid, Segment, Container } from 'semantic-ui-react';
+import { Form, Header, Grid, Segment, Container } from 'semantic-ui-react';
 import FormModal from './FormModal';
 
 class Navigation extends Component {
@@ -59,7 +59,6 @@ class Navigation extends Component {
 						</Grid.Row>
 					</Grid>
 				</Segment>
-				{/* {this.state.isOpen ? <FormModal modalClose={this.modalClose} /> : null} */}
 			</Container>
 		);
 	}

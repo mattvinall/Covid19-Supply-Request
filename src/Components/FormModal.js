@@ -62,7 +62,7 @@ class FormModal extends Component {
 
 	render() {
 		return (
-			<Modal trigger={<Icon onClick={this.handleClick} name="plus" size="small" />}>
+			<Modal trigger={<Icon onClick={this.handleClick} name="plus" size="large" />}>
 				<Modal.Header>Add Supplies</Modal.Header>
 				<Modal.Content scrolling>
 					<Form onSubmit={this.handleSubmit}>
@@ -73,7 +73,7 @@ class FormModal extends Component {
 								name="supplyType"
 								options={options}
 								placeholder="— Select one"
-								required="true"
+								required
 								onChange={this.handleChange}
 							/>
 							<Form.Input
@@ -98,7 +98,7 @@ class FormModal extends Component {
 								label="First Name"
 								name="firstName"
 								placeholder="First Name"
-								required="true"
+								required
 								onChange={this.handleChange}
 							/>
 							<Form.Input
@@ -106,7 +106,7 @@ class FormModal extends Component {
 								label="Last Name"
 								name="lastName"
 								placeholder="Last Name"
-								required="true"
+								required
 								onChange={this.handleChange}
 							/>
 						</Form.Group>
@@ -133,7 +133,7 @@ class FormModal extends Component {
 								name="phone"
 								placeholder="Phone Number"
 								type="tel"
-								required="true"
+								required
 								onChange={this.handleChange}
 							/>
 							<Form.Input
@@ -142,16 +142,16 @@ class FormModal extends Component {
 								name="email"
 								placeholder="Email Address"
 								type="email"
-								required="true"
+								required
 								onChange={this.handleChange}
 							/>
 						</Form.Group>
 						<Form.Checkbox
 							label="I agree to the Terms and Conditions"
-							required="true"
+							required
 							onChange={this.handleChange}
 						/>
-						<Form.Button onClick={this.handleTerms}>Submit</Form.Button>
+						<Form.Button type="submit">Submit</Form.Button>
 					</Form>
 				</Modal.Content>
 				<Modal.Actions>
