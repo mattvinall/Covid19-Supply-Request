@@ -1,8 +1,8 @@
 .app-container {
 	background-color: #eee;
 	display: flex;
+	flex-direction: column;
 	padding-top: 50px;
-	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	min-height: 100vh;
 }
@@ -12,4 +12,9 @@
 .ui.grid > .row > [class*="right aligned"].column.column,
 .ui.form .field > label {
 	color: #232323;
+}
+
+.list__container .ui.grid > .row > [class*="six wide"].column {
+	display: flex;
+	justify-content: space-around;
 }
