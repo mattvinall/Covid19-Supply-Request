@@ -1,17 +1,15 @@
 import React from 'react';
+import './Details.css';
 import { Grid, Item, Image } from 'semantic-ui-react';
 
 const Details = (props) => {
 	{
 		return props.data.map((item, index) => {
 			return (
-				<Grid key={index} centered={true} columns={2} padded="vertically">
-					<Grid.Column>
-						<Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
-					</Grid.Column>
+				<Grid key={index} centered={true}>
 					<Grid.Column>
 						<Item.Content>
-							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
+							<Item.Meta as="h3">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
 							<Item.Header as="a">{item.organization}</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
