@@ -35,6 +35,14 @@
 	width: 66.66%;
 }
 
+.flex-container {
+	display: flex;
+}
+
+.text-center {
+	text-align: center !important;
+}
+
 .item-border {
 	border-bottom: 1px solid #bcbec0 !important;
 	padding-bottom: 10px !important;

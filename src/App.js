@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './Components/Nav';
 import List from './Components/List';
 import Details from './Components/Details';
-import { Container } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import firebase from './firebase';
@@ -53,8 +53,10 @@ class App extends Component {
 			<div className="app-container flex-column">
 				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
 				<Container>
-					<List className="col-xs-4 col-lg-4" data={this.state.data} />
-					<Details className="col-xs-4 col-lg-8" />
+					<Segment className="flex-container">
+						<List className="col-lg-4" data={this.state.data} />
+						<Details className="col-lg-8" data={this.state.data} />
+					</Segment>
 				</Container>
 			</div>
 		);

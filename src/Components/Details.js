@@ -1,60 +1,30 @@
-import React, { Component } from 'react';
-import { Form, Icon, Header, Grid, Segment, Container } from 'semantic-ui-react';
+import React from 'react';
+import { Grid, Item, Image } from 'semantic-ui-react';
 
-class Details extends Component {
-	constructor() {
-		super();
-		this.state = {
-			data: [],
-			searchTerm: '',
-			isOpen: false
-		};
+const Details = (props) => {
+	{
+		return props.data.map((item, index) => {
+			return (
+				<Grid key={index} centered={true} columns={2} padded="vertically">
+					<Grid.Column>
+						<Image src="https://react.semantic-ui.com/images/wireframe/paragraph.png" />
+					</Grid.Column>
+					<Grid.Column>
+						<Item.Content>
+							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
+							<Item.Header as="a">{item.organization}</Item.Header>
+							<Item.Meta>{item.department}</Item.Meta>
+							<Item.Description>
+								<Item.Meta>{item.item}</Item.Meta>
+								<Item.Meta>Quantity x {item.quantity}</Item.Meta>
+							</Item.Description>
+							<Item.Extra as="a">Additional Details</Item.Extra>
+						</Item.Content>
+					</Grid.Column>
+				</Grid>
+			);
+		});
 	}
-
-	handleClick = (e) => {
-		e.preventDefault();
-		this.setState((prevState) => ({
-			isOpen: !prevState.isOpen
-		}));
-	};
-
-	render() {
-		return (
-			<Container classname="col-xs-4 col-lg-8">
-				<Header as="h3" content="" textAlign="left" color="white" />
-				<Segment classname="col-xs-12 col-lg-8">
-					<Grid classname= "col-xs-12 col-lg-8">
-						<Grid.Row style={{ display: 'flex' }}>
-							<Grid.Column>
-								<h3>
-									Sunnybrooke Hospital
-								</h3>
-								<h4>
-									Address
-								</h4>
-								<p>
-									2075 Bayview Ave, Toronto, ON M4N 3M5
-								</p>
-								<h4>
-									Phone Number
-								</h4>
-								<p>
-									(416) 480-6100
-								</p>
-								<h4>
-									Email
-								</h4>
-								<p>
-									DummyVariable@gmail.com
-								</p>
-							</Grid.Column>
-						</Grid.Row>
-					</Grid>
-				</Segment>
-			</Container>
-		);
-	}
-
-}
+};
 
 export default Details;
