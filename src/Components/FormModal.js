@@ -48,6 +48,13 @@ class FormModal extends Component {
 		});
 	};
 
+	// Workaround cuz semantic has a bug due to which handleChange() doesn't work
+	handleDropdown = (e,d) => {
+		this.setState({
+			[d.name]: d.value
+		})
+	}
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('handle sub', e);
@@ -74,7 +81,7 @@ class FormModal extends Component {
 								options={options}
 								placeholder="— Select one"
 								required
-								onChange={this.handleChange}
+								onChange={this.handleDropdown}
 							/>
 							<Form.Input
 								fluid
