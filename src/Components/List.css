@@ -1,3 +1,6 @@
 .border-right {
-	border-right: 1px solid #bcbec0 !important;
+	border-right: 10px solid white !important;
+}
+.col-lg-4{
+	padding-top: 15px;
 }
