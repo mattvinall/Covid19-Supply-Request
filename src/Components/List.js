@@ -84,11 +84,19 @@ const List = (props) => {
 							<Item.Extra as="a">More info</Item.Extra>
 						</Item.Content>
 					</Item> */}
+<<<<<<< HEAD
 					</Item.Group>
 				);
 			})}
 		</Fragment>
 	);
 };
+=======
+				</Item.Group>
+			);
+		})}
+	</Fragment>
+);
+>>>>>>> commenting some things out
 
 export default List;
