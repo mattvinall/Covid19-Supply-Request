@@ -15,7 +15,8 @@ class App extends Component {
 			data: [], // date from firestore
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
-			isOpen: false
+			isOpen: false,
+			userSelection: 0
 		};
 	}
 
@@ -48,13 +49,28 @@ class App extends Component {
 		});
 	};
 
+	updateUserSelection = (userSelection) => {
+		this.setState({
+			userSelection
+		});
+	};
+
+	sendData = (data) => {
+		console.log(data);
+	};
+
 	render() {
 		return (
 			<div className="app-container flex-column">
 				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
 				<Container>
 					<Segment className="flex-container">
-						<List className="col-lg-4" data={this.state.data} />
+						<List
+							// updateUserSelection={this.updateUserSelection}
+							className="col-lg-4"
+							data={this.state.data}
+							sendData={this.sendData}
+						/>
 						<Details className="col-lg-8" data={this.state.data} />
 					</Segment>
 				</Container>

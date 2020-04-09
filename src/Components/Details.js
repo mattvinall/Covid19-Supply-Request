@@ -1,11 +1,12 @@
 import React from 'react';
 import './Details.css';
-import { Grid, Item, Image } from 'semantic-ui-react';
+import { Grid, Item } from 'semantic-ui-react';
 
 const Details = (props) => {
 	{
 		return props.data.map((item, index) => {
 			return (
+				// <List />
 				<Grid key={index} centered={true}>
 					<Grid.Column>
 						<Item.Content>

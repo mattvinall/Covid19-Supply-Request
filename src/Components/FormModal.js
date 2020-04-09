@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Button, Form, Icon } from 'semantic-ui-react';
+import { Modal, Form, Icon, Dropdown } from 'semantic-ui-react';
+import firebase from '../firebase';
 
 const options = [
 	{ key: 'sm', text: 'Surgical Masks', value: 'surgical_masks' },
@@ -20,8 +21,8 @@ const options = [
 ];
 
 class FormModal extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {
 			isRequest: true,
 			supplyType: '',
@@ -36,10 +37,6 @@ class FormModal extends Component {
 			isOpen: false,
 			acceptedTerms: false
 		};
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleTerms = this.handleTerms.bind(this);
 	}
 
 	handleChange = (e) => {
@@ -49,15 +46,32 @@ class FormModal extends Component {
 	};
 
 	// Workaround cuz semantic has a bug due to which handleChange() doesn't work
-	handleDropdown = (e,d) => {
+	handleDropdown = (e, d) => {
 		this.setState({
 			[d.name]: d.value
-		})
-	}
+		});
+	};
 
 	handleSubmit = (e) => {
+		// prevent default on form submit
 		e.preventDefault();
-		console.log('handle sub', e);
+
+		// reference firestore
+		const db = firebase.firestore();
+
+		// add to supply items collection with values from state
+		db.collection('supply_items').add({
+			supplyType: this.state.supplyType,
+			quantity: this.state.quantity,
+			description: this.state.description,
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			organization: this.state.organization,
+			department: this.state.department,
+			email: this.state.email,
+			phone: this.state.phone,
+			date: firebase.database.ServerValue.TIMESTAMP
+		});
 	};
 
 	handleTerms = (e) => {
@@ -75,9 +89,9 @@ class FormModal extends Component {
 					<Form onSubmit={this.handleSubmit}>
 						<Form.Group widths="equal">
 							<Form.Select
+								name="supplyType"
 								fluid
 								label="Supply Type"
-								name="supplyType"
 								options={options}
 								placeholder="— Select one"
 								required
@@ -156,17 +170,19 @@ class FormModal extends Component {
 						<Form.Checkbox
 							label="I agree to the Terms and Conditions"
 							required
-							onChange={this.handleChange}
+							onChange={this.handleTerms}
 						/>
-						<Form.Button type="submit">Submit</Form.Button>
+						<Form.Button onClick={this.handleSubmit} primary type="submit">
+							Submit
+						</Form.Button>
 					</Form>
 				</Modal.Content>
-				<Modal.Actions>
+				{/* <Modal.Actions>
 					<Button onClick={this.handleSubmit} primary>
 						Submit
 					</Button>
 					<Button cancel>Cancel</Button>
-				</Modal.Actions>
+				</Modal.Actions> */}
 			</Modal>
 		);
 	}
