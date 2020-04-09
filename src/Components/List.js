@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Item } from 'semantic-ui-react';
+import './List.css';
 
 const List = (props) => (
 	<Fragment>
