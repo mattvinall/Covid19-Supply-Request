@@ -27,7 +27,7 @@ const List = (props) => {
 						{/* <Item className={'item-border border-right'}>
 						<Item.Image size="tiny" src="https://react.semantic-ui.com/images/wireframe/image.png" />
 						<Item.Content>
-							<Item.Header as="a">{item.organization}</Item.Header>
+							<Item.Header as="a">Masks</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
 								<Item.Meta>{item.item}</Item.Meta>
