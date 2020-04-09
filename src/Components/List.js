@@ -2,9 +2,9 @@ import React, { Fragment, useEffect } from 'react';
 import { Item } from 'semantic-ui-react';
 
 const List = (props) => {
-	useEffect(() => {
-		props.sendData('hello');
-	});
+	// useEffect(() => {
+	// 	props.sendData('hello');
+	// });
 	return (
 		<Fragment>
 			{props.data.map((item, index) => {

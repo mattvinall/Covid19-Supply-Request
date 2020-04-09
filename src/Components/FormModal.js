@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import { Modal, Form, Icon, Dropdown } from 'semantic-ui-react';
+import { Modal, Form, Icon } from 'semantic-ui-react';
 import firebase from '../firebase';
 
 const options = [
-	{ key: 'sm', text: 'Surgical Masks', value: 'surgical_masks' },
-	{ key: 'n95', text: 'N95 Masks', value: 'n95_masks' },
-	{ key: 'fs', text: 'Face Shields', value: 'face_shields' },
-	{ key: 'c', text: 'Coveralls', value: 'coveralls' },
-	{ key: 'hs', text: 'Hazmat Suits', value: 'hazmat_suits' },
-	{ key: 'hc', text: 'Head Covering', value: 'head_covering' },
-	{ key: 'gogg', text: 'Goggles', value: 'goggles' },
-	{ key: 'go', text: 'Gowns', value: 'gowns' },
-	{ key: 'gl', text: 'Gloves', value: 'gloves' },
-	{ key: 'hansan', text: 'Hand Sanitizer', value: 'hand_sanitizer' },
-	{ key: 'wpb', text: 'Waterproof Boots', value: 'waterproof_boots' },
-	{ key: 'v', text: 'Ventilators', value: 'ventilators' },
-	{ key: 'vfil', text: 'Filters for Ventilators', value: 'filters' },
-	{ key: 'sc', text: 'Shoe Covering', value: 'shoe_covering' },
-	{ key: 'cs', text: 'Cleaning Supplies (e.g. bleach)', value: 'cleaning_supplies' }
+	{ key: 'sm', text: 'Surgical Masks', value: 'Surgical Masks' },
+	{ key: 'n95', text: 'N95 Masks', value: 'N95 Masks' },
+	{ key: 'fs', text: 'Face Shields', value: 'Face Shields' },
+	{ key: 'c', text: 'Coveralls', value: 'Coveralls' },
+	{ key: 'hs', text: 'Hazmat Suits', value: 'Hazmat Suits' },
+	{ key: 'hc', text: 'Head Covering', value: 'Head Covering' },
+	{ key: 'gogg', text: 'Goggles', value: 'Goggles' },
+	{ key: 'go', text: 'Gowns', value: 'Gowns' },
+	{ key: 'gl', text: 'Gloves', value: 'Gloves' },
+	{ key: 'hansan', text: 'Hand Sanitizer', value: 'Hand Sanitizer' },
+	{ key: 'wpb', text: 'Waterproof Boots', value: 'Waterproof Boots' },
+	{ key: 'v', text: 'Ventilators', value: 'Ventilators' },
+	{ key: 'vfil', text: 'Filters for Ventilators', value: 'Filters for Ventilators' },
+	{ key: 'sc', text: 'Shoe Covering', value: 'Shoe Covering' },
+	{ key: 'cs', text: 'Cleaning Supplies (e.g. bleach)', value: 'Cleaning Supplies' }
 ];
 
 class FormModal extends Component {
@@ -76,9 +76,9 @@ class FormModal extends Component {
 
 	handleTerms = (e) => {
 		e.preventDefault();
-		this.setState({
-			acceptedTerms: true
-		});
+		this.setState((prevState) => ({
+			acceptedTerms: !prevState.acceptedTerms
+		}));
 	};
 
 	render() {
