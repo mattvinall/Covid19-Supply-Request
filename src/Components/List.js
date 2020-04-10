@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { Item } from 'semantic-ui-react';
+import './List.css';
 
 const List = (props) => {
 	// useEffect(() => {
@@ -26,66 +27,61 @@ const List = (props) => {
 						{/* <Item className={'item-border border-right'}>
 						<Item.Image size="tiny" src="https://react.semantic-ui.com/images/wireframe/image.png" />
 						<Item.Content>
-							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
-							<Item.Header as="a">{item.organization}</Item.Header>
+							<Item.Header as="a">Masks</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
 								<Item.Meta>{item.item}</Item.Meta>
 								<Item.Meta>Quantity x {item.quantity}</Item.Meta>
 							</Item.Description>
-							<Item.Extra as="a">Additional Details</Item.Extra>
+							<Item.Extra as="a">More info</Item.Extra>
 						</Item.Content>
 					</Item>
 					<Item className={'item-border border-right'}>
 						<Item.Image size="tiny" src="https://react.semantic-ui.com/images/wireframe/image.png" />
 						<Item.Content>
-							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
 							<Item.Header as="a">{item.organization}</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
 								<Item.Meta>{item.item}</Item.Meta>
 								<Item.Meta>Quantity x {item.quantity}</Item.Meta>
 							</Item.Description>
-							<Item.Extra as="a">Additional Details</Item.Extra>
+							<Item.Extra as="a">More info</Item.Extra>
 						</Item.Content>
 					</Item>
 					<Item className={'item-border border-right'}>
 						<Item.Image size="tiny" src="https://react.semantic-ui.com/images/wireframe/image.png" />
 						<Item.Content>
-							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
 							<Item.Header as="a">{item.organization}</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
 								<Item.Meta>{item.item}</Item.Meta>
 								<Item.Meta>Quantity x {item.quantity}</Item.Meta>
 							</Item.Description>
-							<Item.Extra as="a">Additional Details</Item.Extra>
+							<Item.Extra as="a">More info</Item.Extra>
 						</Item.Content>
 					</Item>
 					<Item className={'item-border border-right'}>
 						<Item.Image size="tiny" src="https://react.semantic-ui.com/images/wireframe/image.png" />
 						<Item.Content>
-							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
 							<Item.Header as="a">{item.organization}</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
 								<Item.Meta>{item.item}</Item.Meta>
 								<Item.Meta>Quantity x {item.quantity}</Item.Meta>
 							</Item.Description>
-							<Item.Extra as="a">Additional Details</Item.Extra>
+							<Item.Extra as="a">More info</Item.Extra>
 						</Item.Content>
 					</Item>
 					<Item className={'item-border border-right'}>
 						<Item.Image size="tiny" src="https://react.semantic-ui.com/images/wireframe/image.png" />
 						<Item.Content>
-							<Item.Meta as="h5">{item.isRequest ? 'Requesting' : 'Offering'}</Item.Meta>
 							<Item.Header as="a">{item.organization}</Item.Header>
 							<Item.Meta>{item.department}</Item.Meta>
 							<Item.Description>
 								<Item.Meta>{item.item}</Item.Meta>
 								<Item.Meta>Quantity x {item.quantity}</Item.Meta>
 							</Item.Description>
-							<Item.Extra as="a">Additional Details</Item.Extra>
+							<Item.Extra as="a">More info</Item.Extra>
 						</Item.Content>
 					</Item> */}
 					</Item.Group>
