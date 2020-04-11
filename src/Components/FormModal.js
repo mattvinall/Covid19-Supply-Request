@@ -36,7 +36,8 @@ class FormModal extends Component {
 			email: '',
 			acceptedTerms: false,
 			isOpen: false,
-			isSubmitted: false
+			isSubmitted: false,
+			id: 1
 		};
 	}
 
@@ -70,7 +71,8 @@ class FormModal extends Component {
 			organization: this.state.organization,
 			department: this.state.department,
 			email: this.state.email,
-			phone: this.state.phone
+			phone: this.state.phone,
+			id: this.state.id
 		});
 
 		this.setState({
@@ -83,7 +85,8 @@ class FormModal extends Component {
 			department: '',
 			email: '',
 			phone: '',
-			isSubmitted: true
+			isSubmitted: true,
+			id: this.state.id  + 1
 		});
 	};
 

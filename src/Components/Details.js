@@ -1,8 +1,7 @@
 import React from 'react';
 import { Grid, Item } from 'semantic-ui-react';
+import firebase from '../firebase';
 
-const url =
-	'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2890.678311590589!2d-79.60987388407186!3d43.57158577912428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b46f6239a840d%3A0x95ad626d2073d91e!2sTrillium%20Health%20Partners%20-%20Mississauga%20Hospital!5e0!3m2!1sen!2sca!4v1586571205053!5m2!1sen!2sca';
 const Details = (props) => {
 	{
 		return props.data.map((item, index) => {
@@ -41,16 +40,6 @@ const Details = (props) => {
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={8}>
-							<iframe
-								src={url}
-								style={{
-									width: '300px',
-									height: '300px',
-									border: '0',
-									ariaHidden: 'false',
-									tabindex: '0'
-								}}
-							/>
 						</Grid.Column>
 						<Grid.Column width={8}>
 							<Item.Group>
