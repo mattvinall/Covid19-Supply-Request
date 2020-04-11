@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Form, Icon } from 'semantic-ui-react';
+import { Modal, Form, Icon, Message } from 'semantic-ui-react';
 import firebase from '../firebase';
 
 const options = [
@@ -34,8 +34,9 @@ class FormModal extends Component {
 			department: '',
 			phone: '',
 			email: '',
+			acceptedTerms: false,
 			isOpen: false,
-			acceptedTerms: false
+			isSubmitted: false
 		};
 	}
 
@@ -69,8 +70,20 @@ class FormModal extends Component {
 			organization: this.state.organization,
 			department: this.state.department,
 			email: this.state.email,
-			phone: this.state.phone,
-			date: firebase.database.ServerValue.TIMESTAMP
+			phone: this.state.phone
+		});
+
+		this.setState({
+			supplyType: '',
+			quantity: '',
+			description: '',
+			firstName: '',
+			lastName: '',
+			organization: '',
+			department: '',
+			email: '',
+			phone: '',
+			isSubmitted: true
 		});
 	};
 
@@ -83,10 +96,10 @@ class FormModal extends Component {
 
 	render() {
 		return (
-			<Modal trigger={<Icon onClick={this.handleClick} name="plus" size="large" />}>
+			<Modal closeIcon={true} trigger={<Icon name="plus" size="large" />}>
 				<Modal.Header>Add Supplies</Modal.Header>
 				<Modal.Content scrolling>
-					<Form onSubmit={this.handleSubmit}>
+					<Form success onSubmit={this.handleSubmit}>
 						<Form.Group widths="equal">
 							<Form.Select
 								name="supplyType"
@@ -152,37 +165,36 @@ class FormModal extends Component {
 								fluid
 								label="Phone Number"
 								name="phone"
-								placeholder="Phone Number"
+								placeholder="416-223-1000"
 								type="tel"
 								required
-								onChange={this.handleChange}
 							/>
 							<Form.Input
 								fluid
 								label="Email Address"
 								name="email"
-								placeholder="Email Address"
+								placeholder="management@hospital.com"
 								type="email"
 								required
-								onChange={this.handleChange}
 							/>
 						</Form.Group>
 						<Form.Checkbox
 							label="I agree to the Terms and Conditions"
 							required
 							onChange={this.handleTerms}
+							error
 						/>
-						<Form.Button onClick={this.handleSubmit} primary type="submit">
-							Submit
-						</Form.Button>
+
+						<Modal.Actions>
+							<Form.Button open={false} primary type="submit">
+								Submit
+							</Form.Button>
+						</Modal.Actions>
+						{this.state.isSubmitted ? (
+							<Message success header="Request has been submitted" content="Test" />
+						) : null}
 					</Form>
 				</Modal.Content>
-				{/* <Modal.Actions>
-					<Button onClick={this.handleSubmit} primary>
-						Submit
-					</Button>
-					<Button cancel>Cancel</Button>
-				</Modal.Actions> */}
 			</Modal>
 		);
 	}

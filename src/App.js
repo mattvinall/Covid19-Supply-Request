@@ -61,17 +61,20 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="app-container flex-column">
+			<div className="app-container">
 				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
 				<Container>
 					<Segment className="flex-container">
-						<List
-							// updateUserSelection={this.updateUserSelection}
-							className="col-lg-4"
-							data={this.state.data}
-							sendData={this.sendData}
-						/>
-						<Details className="col-lg-8" data={this.state.data} />
+						<div className="col-lg-4 flex-column">
+							<List
+								// updateUserSelection={this.updateUserSelection}
+								data={this.state.data}
+								// sendData={this.sendData}
+							/>
+						</div>
+						<div className="col-lg-8">
+							<Details data={this.state.data} />
+						</div>
 					</Segment>
 				</Container>
 			</div>

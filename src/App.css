@@ -7,6 +7,7 @@
 	min-height: 100vh;
 }
 
+/* layout css  */
 .ui.center.aligned.header,
 .ui.centered.header,
 .ui.grid > .row > [class*="right aligned"].column.column,
@@ -39,6 +40,10 @@
 	display: flex;
 }
 
+.flex-column {
+	flex-direction: column;
+}
+
 .text-center {
 	text-align: center !important;
 }
@@ -57,4 +62,17 @@
 	font-size: 1em;
 	line-height: 1em;
 	color: rgba(0, 0, 0, .6);
+}
+
+/* details css */
+.ui.centered.grid {
+	padding-left: 30px;
+	padding-top: 10px;
+}
+
+.border-right {
+	border-right: 10px solid white !important;
+}
+.col-lg-4 {
+	padding-top: 15px;
 }
