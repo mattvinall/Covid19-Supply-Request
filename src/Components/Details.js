@@ -1,12 +1,17 @@
 import React from 'react';
+<<<<<<< HEAD
+=======
+import { Fragment, useEffect, List } from 'react';
+import './Details.css';
+>>>>>>> 808a35111465bbf57c7354106f819180062264e6
 import { Grid, Item } from 'semantic-ui-react';
 
 const url =
 	'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2890.678311590589!2d-79.60987388407186!3d43.57158577912428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b46f6239a840d%3A0x95ad626d2073d91e!2sTrillium%20Health%20Partners%20-%20Mississauga%20Hospital!5e0!3m2!1sen!2sca!4v1586571205053!5m2!1sen!2sca';
 const Details = (props) => {
 	{
-		return props.data.map((item, index) => {
 			return (
+<<<<<<< HEAD
 				// <List />
 				<Grid className="details-view" key={index} centered={true}>
 					<Grid.Row>
@@ -96,10 +101,25 @@ const Details = (props) => {
 							</Item.Group>
 						</Grid.Column>
 					</Grid.Row>
+=======
+				<Grid celled centered={false}>
+					<Grid.Column width={13}>
+							<h3>SunnyBrooke</h3>
+							<h4>Department:</h4>
+							<h4>Requesting:</h4>
+							<h4>Address:</h4>
+							<p>2075 Bayview Ave, Toronto, ON M4N 3M5</p>
+							<h4>Email:</h4>
+							<p>maddison@sunnybrooke.ca</p>
+							<h4>Phone number:</h4>
+							<p>(416) 480-6100</p>
+							<h4>Special instructions:</h4>
+							<p>Please drop off all the donations on the 3rd floor.</p>
+					</Grid.Column>
+>>>>>>> 808a35111465bbf57c7354106f819180062264e6
 				</Grid>
 			);
-		});
-	}
+		};
 };
 
 export default Details;
