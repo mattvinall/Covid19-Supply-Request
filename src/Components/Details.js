@@ -22,7 +22,7 @@ const Details = (props) => {
 										}}
 										as="h4"
 									>
-										{item.organization}, {item.department}
+										{item.organization} {item.department}
 									</Item.Header>
 								</Item.Content>
 							</Item.Group>
@@ -34,11 +34,7 @@ const Details = (props) => {
 								style={{ border: '1px solid #bcbec0', padding: '15px 30px', textAlign: 'left' }}
 							>
 								<Item.Meta as="p">
-									lorem ipsum dola sit. lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola
-									sit.lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola
-									sit.lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola
-									sit.lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola sit.lorem ipsum dola
-									sit.lorem ipsum dola sit.
+									{item.description}
 								</Item.Meta>
 							</Item.Description>
 						</Grid.Column>
