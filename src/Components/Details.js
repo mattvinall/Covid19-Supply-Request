@@ -1,13 +1,16 @@
 import React from 'react';
 import { Grid, Item } from 'semantic-ui-react';
 import firebase from '../firebase';
+import List from './List.js';
 
 const Details = (props) => {
 	{
 		return props.data.map((item, index) => {
 			return (
-				// <List />
 				<Grid className="details-view" key={index} centered={true}>
+					<Grid.Row>
+					<h2> {props.message} </h2>
+					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={16}>
 							<Item.Group>
