@@ -32,21 +32,22 @@ class FormModal extends Component {
 			lastName: '',
 			organization: '',
 			department: '',
-			phone: '',
-			email: '',
+			requestor_phone: '',
+			requestor_email: '',
 			acceptedTerms: false,
 			isOpen: false,
 			isSubmitted: false
 		};
 	}
 
+	// form control for inputs to dynamically update the state once the user starts typing into the input field
 	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
 		});
 	};
 
-	// Workaround cuz semantic has a bug due to which handleChange() doesn't work
+	// Workaround because semantic has a bug due to which handleChange() doesn't work
 	handleDropdown = (e, d) => {
 		this.setState({
 			[d.name]: d.value
@@ -69,10 +70,11 @@ class FormModal extends Component {
 			lastName: this.state.lastName,
 			organization: this.state.organization,
 			department: this.state.department,
-			email: this.state.email,
-			phone: this.state.phone
+			email: this.state.requestor_email,
+			phone: this.state.requestor_phone
 		});
 
+		// reset state back to original state once form is submitted
 		this.setState({
 			supplyType: '',
 			quantity: '',
@@ -81,12 +83,13 @@ class FormModal extends Component {
 			lastName: '',
 			organization: '',
 			department: '',
-			email: '',
-			phone: '',
+			requestor_email: '',
+			requestor_phone: '',
 			isSubmitted: true
 		});
 	};
 
+	// handle terms and conditions check
 	handleTerms = (e) => {
 		e.preventDefault();
 		this.setState((prevState) => ({
@@ -107,8 +110,8 @@ class FormModal extends Component {
 								label="Supply Type"
 								options={options}
 								placeholder="— Select one"
-								required
 								onChange={this.handleDropdown}
+								required
 							/>
 							<Form.Input
 								fluid
@@ -150,6 +153,7 @@ class FormModal extends Component {
 								label="Organization Name"
 								name="organization"
 								placeholder="Organization Name"
+								required
 								onChange={this.handleChange}
 							/>
 							<Form.Input
@@ -157,6 +161,7 @@ class FormModal extends Component {
 								label="Department Name"
 								name="department"
 								placeholder="Department Name"
+								required
 								onChange={this.handleChange}
 							/>
 						</Form.Group>
@@ -182,7 +187,6 @@ class FormModal extends Component {
 							label="I agree to the Terms and Conditions"
 							required
 							onChange={this.handleTerms}
-							error
 						/>
 
 						<Modal.Actions>
@@ -191,7 +195,12 @@ class FormModal extends Component {
 							</Form.Button>
 						</Modal.Actions>
 						{this.state.isSubmitted ? (
-							<Message success header="Request has been submitted" content="Test" />
+							<Message
+								success
+								header="Success!"
+								content={`Form has successfully been submitted for ${this.state.quantity} ${this.state
+									.supplyType}`}
+							/>
 						) : null}
 					</Form>
 				</Modal.Content>
