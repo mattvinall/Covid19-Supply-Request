@@ -32,12 +32,12 @@ class FormModal extends Component {
 			lastName: '',
 			organization: '',
 			department: '',
-			requestor_phone: '',
 			requestor_email: '',
+			requestor_phone: '',
 			acceptedTerms: false,
 			isOpen: false,
 			isSubmitted: false,
-			id: 1
+			id: 0
 		};
 	}
 
@@ -71,21 +71,22 @@ class FormModal extends Component {
 			lastName: this.state.lastName,
 			organization: this.state.organization,
 			department: this.state.department,
-			email: this.state.requestor_email,
-			phone: this.state.requestor_phone
+			requestor_email: this.state.requestor_email,
+			requestor_phone: this.state.requestor_phone,
+			id: this.state.id
 		});
 
 		// reset state back to original state once form is submitted
 		this.setState({
 			supplyType: '',
-			quantity: '',
+			quantity: 0,
 			description: '',
 			firstName: '',
 			lastName: '',
 			organization: '',
 			department: '',
-			email: '',
-			phone: '',
+			requestor_phone: '',
+			requestor_email: '',
 			isSubmitted: true,
 			id: this.state.id + 1
 		});
@@ -123,6 +124,7 @@ class FormModal extends Component {
 								type="number"
 								min="1"
 								onChange={this.handleChange}
+								required
 							/>
 						</Form.Group>
 						<Form.TextArea
@@ -130,6 +132,7 @@ class FormModal extends Component {
 							name="description"
 							placeholder="Tell us anything else about your request/offer. For example, brand/model, delivery instructions, etc."
 							onChange={this.handleChange}
+							required
 						/>
 						<Form.Group widths="equal">
 							<Form.Input
@@ -139,6 +142,7 @@ class FormModal extends Component {
 								placeholder="First Name"
 								required
 								onChange={this.handleChange}
+								required
 							/>
 							<Form.Input
 								fluid
@@ -147,6 +151,7 @@ class FormModal extends Component {
 								placeholder="Last Name"
 								required
 								onChange={this.handleChange}
+								required
 							/>
 						</Form.Group>
 						<Form.Group widths="equal">
@@ -171,18 +176,20 @@ class FormModal extends Component {
 							<Form.Input
 								fluid
 								label="Phone Number"
-								name="phone"
+								name="requestor_phone"
 								placeholder="416-223-1000"
 								type="tel"
 								required
+								onChange={this.handleChange}
 							/>
 							<Form.Input
 								fluid
 								label="Email Address"
-								name="email"
+								name="requestor_email"
 								placeholder="management@hospital.com"
 								type="email"
 								required
+								onChange={this.handleChange}
 							/>
 						</Form.Group>
 						<Form.Checkbox
@@ -199,9 +206,7 @@ class FormModal extends Component {
 						{this.state.isSubmitted ? (
 							<Message
 								success
-								header="Success!"
-								content={`Form has successfully been submitted for ${this.state.quantity} ${this.state
-									.supplyType}`}
+								content="Form has successfully been submitted! Please close the form modal"
 							/>
 						) : null}
 					</Form>
