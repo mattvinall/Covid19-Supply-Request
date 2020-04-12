@@ -36,7 +36,8 @@ class FormModal extends Component {
 			requestor_email: '',
 			acceptedTerms: false,
 			isOpen: false,
-			isSubmitted: false
+			isSubmitted: false,
+			id: 1
 		};
 	}
 
@@ -83,9 +84,10 @@ class FormModal extends Component {
 			lastName: '',
 			organization: '',
 			department: '',
-			requestor_email: '',
-			requestor_phone: '',
-			isSubmitted: true
+			email: '',
+			phone: '',
+			isSubmitted: true,
+			id: this.state.id + 1
 		});
 	};
 
