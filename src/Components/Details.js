@@ -1,16 +1,15 @@
 import React from 'react';
-import { Grid, Item } from 'semantic-ui-react';
+import { Grid, Item, Icon } from 'semantic-ui-react';
 // import firebase from '../firebase';
 // import List from './List.js';
 
 const Details = (props) => {
 	{
 		return props.data.map((item, index) => {
-			console.log(item);
 			return (
 				<Grid className="details-view" key={index} centered={true}>
 					<Grid.Row>
-						<h2> {props.message} </h2>
+						<h2> {item.message} </h2>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={16}>
@@ -19,13 +18,13 @@ const Details = (props) => {
 									<Item.Header
 										style={{
 											fontWeight: 500,
-											fontSize: '2.0rem',
+											fontSize: '1.6rem',
 											paddingBottom: '5px'
 											// borderBottom: '1px solid #bcbec0'
 										}}
 										as="h4"
 									>
-										{item.organization}, {item.department}
+										<Icon as="i" name="hospital" /> {item.organization}, {item.department}
 									</Item.Header>
 								</Item.Content>
 							</Item.Group>
@@ -41,11 +40,8 @@ const Details = (props) => {
 						</Grid.Column>
 					</Grid.Row>
 					<Grid.Row>
-						<Grid.Column width={16}>
+						<Grid.Column width={8}>
 							<Item.Group>
-								<Item.Header as="h2" style={{ fontSize: '1.5rem', fontWeight: 500 }}>
-									Additional Details:
-								</Item.Header>
 								<Item.Content>
 									<Item.Meta
 										as="h3"
@@ -55,7 +51,7 @@ const Details = (props) => {
 											borderBottom: '1px dotted #bcbec0'
 										}}
 									>
-										Requested by: {item.firstName} {item.lastName}
+										<Icon as="i" name="user" />Requested by: {item.firstName} {item.lastName}
 									</Item.Meta>
 									<Item.Meta
 										as="h3"
@@ -65,7 +61,8 @@ const Details = (props) => {
 											borderBottom: '1px dotted #bcbec0'
 										}}
 									>
-										Phone: <a href={`tel:${item.requestor_phone}`}>{item.requestor_phone}</a>
+										<Icon as="i" name="phone" />Phone:{' '}
+										<a href={`tel:${item.requestor_phone}`}>{item.requestor_phone}</a>
 									</Item.Meta>
 									<Item.Meta
 										as="h3"
@@ -75,8 +72,45 @@ const Details = (props) => {
 											borderBottom: '1px dotted #bcbec0'
 										}}
 									>
-										Email: <a href={`mailto:${item.requestor_email}`}>{item.requestor_email}</a>
+										<Icon as="i" name="mail" />Email:{' '}
+										<a href={`mailto:${item.requestor_email}`}>{item.requestor_email}</a>
 									</Item.Meta>
+								</Item.Content>
+							</Item.Group>
+						</Grid.Column>
+						<Grid.Column width={8}>
+							<Item.Group>
+								<Item.Content>
+									<Item.Meta
+										as="h3"
+										style={{
+											fontSize: '1.3rem',
+											fontWeight: 400,
+											borderBottom: '1px dotted #bcbec0'
+										}}
+									>
+										<Icon as="i" name="medkit" /> Supply Type: {item.supplyType}
+									</Item.Meta>
+									<Item.Meta
+										as="h3"
+										style={{
+											fontSize: '1.3rem',
+											fontWeight: 400,
+											borderBottom: '1px dotted #bcbec0'
+										}}
+									>
+										Quantity
+										<Icon as="i" name="times" />
+										{item.quantity}
+									</Item.Meta>
+									<Item.Meta
+										as="h3"
+										style={{
+											fontSize: '1.3rem',
+											fontWeight: 400,
+											borderBottom: '1px dotted #bcbec0'
+										}}
+									/>
 								</Item.Content>
 							</Item.Group>
 						</Grid.Column>

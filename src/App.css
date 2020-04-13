@@ -76,3 +76,21 @@
 .col-lg-4 {
 	padding-top: 15px;
 }
+
+.details-view h3.meta:last-child {
+	border-bottom: none !important;
+}
+
+.ui.vertical.divider {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 34%;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: 50%;
+	line-height: 0;
+	text-align: center;
+	transform: translateX(-50%);
+}

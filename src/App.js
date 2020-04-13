@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './Components/Nav';
 import List from './Components/List';
 import Details from './Components/Details';
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Divider } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import firebase from './firebase';
@@ -72,6 +72,7 @@ class App extends Component {
 								// sendData={this.sendData}
 							/>
 						</div>
+						<Divider vertical />
 						<div className="col-lg-8">
 							<Details data={this.state.data} />
 						</div>
