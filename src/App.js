@@ -17,7 +17,6 @@ class App extends Component {
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
 			isOpen: false,
-			userSelection: 0,
 			db: null,
 			selectedItem: null,
 		};
@@ -68,8 +67,6 @@ class App extends Component {
 
 	render() {
 		const {db, data, selectedItem} = this.state;
-		console.log('selected Item', selectedItem);
-		console.log( selectedItem === true)
 		return (
 			<div className="app-container">
 				<Navigation
@@ -81,11 +78,9 @@ class App extends Component {
 					<Segment className="flex-container">
 						<div className="col-lg-4 flex-column">
 							<List
-								// updateUserSelection={this.updateUserSelection}
 								data={data}
 								db={db}
 								selectItem={this.selectItem}
-								// sendData={this.sendData}
 							/>
 						</div>
 						<Divider vertical />

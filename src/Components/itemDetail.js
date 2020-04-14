@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid, Item, Icon } from 'semantic-ui-react';
 
 const ItemDetail = (props) => {
-    console.log('props', props);
 		return (
 			<Grid className="details-view" key={props.item.id} centered={true}>
 				<Grid.Row>
