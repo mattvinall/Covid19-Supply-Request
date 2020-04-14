@@ -14,7 +14,10 @@ const List = (props) => {
 									<Item.Meta>{item.organization}</Item.Meta>
 									<Item.Meta>Quantity x {item.quantity}</Item.Meta>
 								</Item.Description>
-								<Item.Extra as="a">More Info</Item.Extra>
+								<Item.Extra as="a">Additional Details</Item.Extra>
+								<a onClick={() => props.selectItem(item)} style={{ cursor: 'pointer' }}>
+									More info
+								</a>
 							</Item.Content>
 						</Item>
 					</Item.Group>
