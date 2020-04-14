@@ -54,7 +54,9 @@ class Navigation extends Component {
 							</Grid.Column>
 							<Grid.Column width="10" textAlign="right" style={{ margin: 'auto' }}>
 								{/* <Icon onClick={this.handleClick} name="plus" size="small" /> */}
-								<FormModal />
+								<FormModal 
+									db = {this.props.db}
+								/>
 							</Grid.Column>
 						</Grid.Row>
 					</Grid>

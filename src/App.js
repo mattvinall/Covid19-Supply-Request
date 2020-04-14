@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './Components/Nav';
 import List from './Components/List';
 import Details from './Components/Details';
+import ItemDetail from './Components/itemDetail';
 import { Container, Segment, Divider } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -16,7 +17,8 @@ class App extends Component {
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
 			isOpen: false,
-			userSelection: 0
+			db: null,
+			selectedItem: null,
 		};
 	}
 
@@ -24,7 +26,7 @@ class App extends Component {
 		const data = [];
 		// const itemType = [];
 		const db = firebase.firestore();
-
+		this.setState({db: db})
 		db.collection('supply_items').get().then((snapshot) => {
 			snapshot.docs.forEach((doc) => {
 				data.push(doc.data());
@@ -59,23 +61,36 @@ class App extends Component {
 		console.log(data);
 	};
 
+	selectItem = (item) => {
+		this.setState({selectedItem: item})
+	}
+
 	render() {
+		const {db, data, selectedItem} = this.state;
 		return (
 			<div className="app-container">
-				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
+				<Navigation
+					db = {db}
+					data = {data}
+					updateSearchTerm = {this.updateSearchTerm} 
+				/>
 				<Container>
 					<Segment className="flex-container">
 						<div className="col-lg-4 flex-column">
 							<List
-								// updateUserSelection={this.updateUserSelection}
-								data={this.state.data}
-								// sendData={this.sendData}
+								data={data}
+								db={db}
+								selectItem={this.selectItem}
 							/>
 						</div>
 						<Divider vertical />
+						{selectedItem && <ItemDetail item={selectedItem}/>}
+						{/* <Divider vertical />
 						<div className="col-lg-8">
-							<Details data={this.state.data} />
-						</div>
+							<Details
+								data={data}
+							/>
+						</div> */}
 					</Segment>
 				</Container>
 			</div>

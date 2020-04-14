@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Modal, Form, Icon, Message } from 'semantic-ui-react';
-import firebase from '../firebase';
 
 const options = [
 	{ key: 'sm', text: 'Surgical Masks', value: 'Surgical Masks' },
@@ -60,10 +59,8 @@ class FormModal extends Component {
 		e.preventDefault();
 
 		// reference firestore
-		const db = firebase.firestore();
-
 		// add to supply items collection with values from state
-		db.collection('supply_items').add({
+		this.props.db.collection('supply_items').add({
 			supplyType: this.state.supplyType,
 			quantity: this.state.quantity,
 			description: this.state.description,

@@ -1,13 +1,11 @@
 import React from 'react';
 import { Grid, Item, Icon } from 'semantic-ui-react';
-// import List from './List.js';
 
-const Details = (props) => {
-	return props.data.map((item, index) => {
+const ItemDetail = (props) => {
 		return (
-			<Grid className="details-view" key={index} centered={true}>
+			<Grid className="details-view" key={props.item.id} centered={true}>
 				<Grid.Row>
-					<h2> {item.message} </h2>
+					<h2> {props.item.message} </h2>
 				</Grid.Row>
 				<Grid.Row>
 					<Grid.Column width={16}>
@@ -22,7 +20,7 @@ const Details = (props) => {
 									}}
 									as="h4"
 								>
-									<Icon as="i" name="hospital" /> {item.organization}, {item.department}
+									<Icon as="i" name="hospital" /> {props.item.organization}, {props.item.department}
 								</Item.Header>
 							</Item.Content>
 						</Item.Group>
@@ -33,7 +31,7 @@ const Details = (props) => {
 						<Item.Description
 							style={{ border: '1px solid #bcbec0', padding: '15px 30px', textAlign: 'left' }}
 						>
-							<Item.Meta as="p">{item.description}</Item.Meta>
+							<Item.Meta as="p">{props.item.description}</Item.Meta>
 						</Item.Description>
 					</Grid.Column>
 				</Grid.Row>
@@ -49,7 +47,7 @@ const Details = (props) => {
 										borderBottom: '1px dotted #bcbec0'
 									}}
 								>
-									<Icon as="i" name="user" />Requested by: {item.firstName} {item.lastName}
+									<Icon as="i" name="user" />Requested by: {props.item.firstName} {props.item.lastName}
 								</Item.Meta>
 								<Item.Meta
 									as="h3"
@@ -60,7 +58,7 @@ const Details = (props) => {
 									}}
 								>
 									<Icon as="i" name="phone" />Phone:{' '}
-									<a href={`tel:${item.requestor_phone}`}>{item.requestor_phone}</a>
+									<a href={`tel:${props.item.requestor_phone}`}>{props.item.requestor_phone}</a>
 								</Item.Meta>
 								<Item.Meta
 									as="h3"
@@ -71,7 +69,7 @@ const Details = (props) => {
 									}}
 								>
 									<Icon as="i" name="mail" />Email:{' '}
-									<a href={`mailto:${item.requestor_email}`}>{item.requestor_email}</a>
+									<a href={`mailto:${props.item.requestor_email}`}>{props.item.requestor_email}</a>
 								</Item.Meta>
 							</Item.Content>
 						</Item.Group>
@@ -87,7 +85,7 @@ const Details = (props) => {
 										borderBottom: '1px dotted #bcbec0'
 									}}
 								>
-									<Icon as="i" name="medkit" /> Supply Type: {item.supplyType}
+									<Icon as="i" name="medkit" /> Supply Type: {props.item.supplyType}
 								</Item.Meta>
 								<Item.Meta
 									as="h3"
@@ -99,7 +97,7 @@ const Details = (props) => {
 								>
 									Quantity
 									<Icon as="i" name="times" />
-									{item.quantity}
+									{props.item.quantity}
 								</Item.Meta>
 								<Item.Meta
 									as="h3"
@@ -115,7 +113,6 @@ const Details = (props) => {
 				</Grid.Row>
 			</Grid>
 		);
-	});
 };
 
-export default Details;
+export default ItemDetail;
