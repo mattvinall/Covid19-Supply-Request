@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navigation from './Components/Nav';
 import List from './Components/List';
 import Details from './Components/Details';
+import ItemDetail from './Components/itemDetail';
 import { Container, Segment, Divider } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -68,6 +69,7 @@ class App extends Component {
 	render() {
 		const {db, data, selectedItem} = this.state;
 		console.log('selected Item', selectedItem);
+		console.log( selectedItem === true)
 		return (
 			<div className="app-container">
 				<Navigation
@@ -87,12 +89,13 @@ class App extends Component {
 							/>
 						</div>
 						<Divider vertical />
+						{selectedItem && <ItemDetail item={selectedItem}/>}
+						{/* <Divider vertical />
 						<div className="col-lg-8">
 							<Details
 								data={data}
-								item={selectedItem}
 							/>
-						</div>
+						</div> */}
 					</Segment>
 				</Container>
 			</div>
