@@ -54,7 +54,7 @@ class App extends Component {
 				<Container>
 					<Segment className="flex-container">
 						<div className="col-lg-4">
-							<List data={data} db={db} selectItem={this.selectItem} />
+							<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
 						</div>
 						<Divider vertical />
 						<div class="col-lg-8">

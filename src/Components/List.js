@@ -2,9 +2,10 @@ import React, { Fragment } from 'react';
 import { Item } from 'semantic-ui-react';
 
 const List = (props) => {
+	const { data, searchTerm } = props;
 	return (
 		<Fragment>
-			{props.data.map((item, index) => {
+			{data.filter((data) => data.supplyType.includes(searchTerm)).map((item, index) => {
 				return (
 					<Item.Group key={index}>
 						<Item className={'item-border border-right'}>
