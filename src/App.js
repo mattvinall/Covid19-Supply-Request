@@ -18,6 +18,7 @@ class App extends Component {
 			isOpen: false,
 			userSelection: 0,
 			db: null,
+			selectedItem: null,
 		};
 	}
 
@@ -60,8 +61,13 @@ class App extends Component {
 		console.log(data);
 	};
 
+	selectItem = (item) => {
+		this.setState({selectedItem: item})
+	}
+
 	render() {
-		const {db, data} = this.state;
+		const {db, data, selectedItem} = this.state;
+		console.log('selected Item', selectedItem);
 		return (
 			<div className="app-container">
 				<Navigation
@@ -76,12 +82,16 @@ class App extends Component {
 								// updateUserSelection={this.updateUserSelection}
 								data={data}
 								db={db}
+								selectItem={this.selectItem}
 								// sendData={this.sendData}
 							/>
 						</div>
 						<Divider vertical />
 						<div className="col-lg-8">
-							<Details data={data} />
+							<Details
+								data={data}
+								item={selectedItem}
+							/>
 						</div>
 					</Segment>
 				</Container>
