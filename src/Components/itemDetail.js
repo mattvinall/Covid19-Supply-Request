@@ -3,10 +3,7 @@ import { Grid, Item, Icon } from 'semantic-ui-react';
 
 const ItemDetail = (props) => {
 	return (
-		<Grid className="details-view" key={props.item.id} centered={true}>
-			<Grid.Row>
-				<h2> {props.item.message} </h2>
-			</Grid.Row>
+		<Grid className="details-view" key={props.item.id}>
 			<Grid.Row>
 				<Grid.Column width={16}>
 					<Item.Group>
@@ -66,7 +63,7 @@ const ItemDetail = (props) => {
 									borderBottom: '1px dotted #bcbec0'
 								}}
 							>
-								<Icon as="i" name="mail" />Email:{' '}
+								<Icon as="i" name="mail" />Email:
 								<a href={`mailto:${props.item.requestor_email}`}>{props.item.requestor_email}</a>
 							</Item.Meta>
 						</Item.Content>

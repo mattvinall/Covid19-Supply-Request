@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Nav';
 import List from './Components/List';
-import Details from './Components/Details';
 import ItemDetail from './Components/itemDetail';
 import { Container, Segment, Divider } from 'semantic-ui-react';
 import './App.css';
@@ -35,30 +34,12 @@ class App extends Component {
 				});
 			});
 		});
-		// db.collection('item_type').get().then((snapshot) => {
-		// 	snapshot.docs.forEach((doc) => {
-		// 		itemType.push(doc.data());
-		// 		this.setState({
-		// 			itemType
-		// 		});
-		// 	});
-		// });
 	}
 
 	updateSearchTerm = (searchTerm) => {
 		this.setState({
 			searchTerm
 		});
-	};
-
-	updateUserSelection = (userSelection) => {
-		this.setState({
-			userSelection
-		});
-	};
-
-	sendData = (data) => {
-		console.log(data);
 	};
 
 	selectItem = (item) => {
@@ -72,26 +53,18 @@ class App extends Component {
 				<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
 				<Container>
 					<Segment className="flex-container">
-						<div className="col-lg-4 flex-column">
+						<div className="col-lg-4">
 							<List data={data} db={db} selectItem={this.selectItem} />
 						</div>
 						<Divider vertical />
-						{selectedItem && <ItemDetail item={selectedItem} />}
-						{/* <Divider vertical />
-						<div className="col-lg-8">
-							<Details
-								data={data}
-							/>
-						</div> */}
+						<div class="col-lg-8">
+							{selectedItem && <ItemDetail className="col-lg-12" item={selectedItem} />}
+						</div>
 					</Segment>
 				</Container>
 			</div>
 		);
 	}
 }
-
-// filter offering / requesting - chceks each item in the array. Check if the key called item = they key called itemTypeSelectd (in state)
-
-// update app js state from nav and pass that searchTerm down to the list component as well as the list of either offering or reuqesting
 
 export default App;
