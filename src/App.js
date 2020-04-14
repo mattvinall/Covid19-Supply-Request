@@ -15,8 +15,7 @@ class App extends Component {
 			data: [], // date from firestore
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
-			isOpen: false,
-			userSelection: 0
+			isOpen: false
 		};
 	}
 
@@ -49,16 +48,6 @@ class App extends Component {
 		});
 	};
 
-	updateUserSelection = (userSelection) => {
-		this.setState({
-			userSelection
-		});
-	};
-
-	sendData = (data) => {
-		console.log(data);
-	};
-
 	render() {
 		return (
 			<div className="app-container">
@@ -69,7 +58,6 @@ class App extends Component {
 							<List
 								// updateUserSelection={this.updateUserSelection}
 								data={this.state.data}
-								// sendData={this.sendData}
 							/>
 						</div>
 						<Divider vertical />

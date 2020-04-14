@@ -81,11 +81,12 @@
 	border-bottom: none !important;
 }
 
+/* divider css */
 .ui.vertical.divider {
 	position: absolute;
 	z-index: 2;
 	top: 50%;
-	left: 34%;
+	left: 34% !important;
 	margin: 0;
 	padding: 0;
 	width: auto;
