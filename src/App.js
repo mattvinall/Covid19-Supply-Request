@@ -16,7 +16,8 @@ class App extends Component {
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
 			isOpen: false,
-			userSelection: 0
+			userSelection: 0,
+			db: null,
 		};
 	}
 
@@ -24,7 +25,7 @@ class App extends Component {
 		const data = [];
 		// const itemType = [];
 		const db = firebase.firestore();
-
+		this.setState({db: db})
 		db.collection('supply_items').get().then((snapshot) => {
 			snapshot.docs.forEach((doc) => {
 				data.push(doc.data());
@@ -60,21 +61,27 @@ class App extends Component {
 	};
 
 	render() {
+		const {db, data} = this.state;
 		return (
 			<div className="app-container">
-				<Navigation data={this.state.data} updateSearchTerm={this.updateSearchTerm} />
+				<Navigation
+					db = {db}
+					data = {data}
+					updateSearchTerm = {this.updateSearchTerm} 
+				/>
 				<Container>
 					<Segment className="flex-container">
 						<div className="col-lg-4 flex-column">
 							<List
 								// updateUserSelection={this.updateUserSelection}
-								data={this.state.data}
+								data={data}
+								db={db}
 								// sendData={this.sendData}
 							/>
 						</div>
 						<Divider vertical />
 						<div className="col-lg-8">
-							<Details data={this.state.data} />
+							<Details data={data} />
 						</div>
 					</Segment>
 				</Container>

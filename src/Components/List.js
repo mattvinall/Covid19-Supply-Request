@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import { Item } from 'semantic-ui-react';
-import firebase from '../firebase';
 import Details from './Details.js';
 
-const db = firebase.firestore();
 
 function handleClick(e) {
 	console.log(e);
