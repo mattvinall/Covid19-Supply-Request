@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Nav';
-import List from './Components/List';
+import CategoryList from './Components/CategoryList';
 import ItemDetail from './Components/itemDetail';
+import CategorySelector from './Components/CategorySelector'
 import { Container, Segment, Divider } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -17,7 +18,8 @@ class App extends Component {
 			searchTerm: '', // search text from nav
 			isOpen: false,
 			db: null,
-			selectedItem: null
+			selectedItem: null,
+			supplyCategories: new Map(),
 		};
 	}
 
@@ -46,15 +48,26 @@ class App extends Component {
 		this.setState({ selectedItem: item });
 	};
 
+	changeCategory = (e, data) => {
+		const supply = data.name;
+		const isChecked = data.checked;
+		this.setState(prevState => ({ supplyCategories: prevState.supplyCategories.set(supply, isChecked) }));
+	  }
+
 	render() {
 		const { db, data, selectedItem } = this.state;
 		return (
 			<div className="app-container">
 				<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
+				<CategorySelector 
+					changeCategory={this.changeCategory}
+					supplyList={this.state.supplyCategories}
+				/>
 				<Container>
 					<Segment className="flex-container">
 						<div className="col-lg-4">
-							<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
+							{/* <List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} /> */}
+							<CategoryList supplyCategories={this.state.supplyCategories} data={data} db={db} selectItem={this.selectItem} />
 						</div>
 						<Divider vertical />
 						<div class="col-lg-8">
