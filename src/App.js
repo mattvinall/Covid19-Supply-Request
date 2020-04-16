@@ -52,25 +52,26 @@ class App extends Component {
 		const supply = data.name;
 		const isChecked = data.checked;
 		this.setState(prevState => ({ supplyCategories: prevState.supplyCategories.set(supply, isChecked) }));
+		console.log(this.state.supplyCategories);
 	  }
 
 	render() {
-		const { db, data, selectedItem } = this.state;
+		const { db, data, selectedItem, supplyCategories } = this.state;
 		return (
 			<div className="app-container">
 				<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
 				<CategorySelector 
 					changeCategory={this.changeCategory}
-					supplyList={this.state.supplyCategories}
+					supplyCategories={supplyCategories}
 				/>
 				<Container>
 					<Segment className="flex-container">
 						<div className="col-lg-4">
 							{/* <List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} /> */}
-							<CategoryList supplyCategories={this.state.supplyCategories} data={data} db={db} selectItem={this.selectItem} />
+							<CategoryList supplyCategories={supplyCategories} data={data} db={db} selectItem={this.selectItem} />
 						</div>
 						<Divider vertical />
-						<div class="col-lg-8">
+						<div className="col-lg-8">
 							{selectedItem && <ItemDetail className="col-lg-12" item={selectedItem} />}
 						</div>
 					</Segment>

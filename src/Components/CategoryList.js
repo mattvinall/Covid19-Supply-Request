@@ -5,7 +5,7 @@ const List = (props) => {
 	const { data, supplyCategories } = props;
 	return (
 		<Fragment>
-            {data.filter((data) => true).map((item, index) => {
+            {data.filter((dataItem) => supplyCategories.has(dataItem.supplyType)).map((item, index) => {
 				return (
 					<Item.Group key={index}>
 						<Item className={'item-border border-right'}>
