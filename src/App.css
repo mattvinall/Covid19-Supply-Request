@@ -91,3 +91,13 @@ h5.item-detail-empty {
 	text-align: center;
 	margin-top: 20px;
 }
+.app-container {
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(136, 171, 182, 1) 95%,
+		rgba(150, 150, 154, 1) 100%,
+		rgba(110, 210, 231, 1) 100%
+	);
+}
