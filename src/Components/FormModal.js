@@ -131,7 +131,6 @@ class FormModal extends Component {
 							name="description"
 							placeholder="Tell us anything else about your request/offer. For example, brand/model, delivery instructions, etc."
 							onChange={this.handleChange}
-							required
 						/>
 						<Form.Group widths="equal">
 							<Form.Input
@@ -192,17 +191,17 @@ class FormModal extends Component {
 							/>
 						</Form.Group>
 						<Form.Checkbox
-							label="I agree to the Terms and Conditions"
+							label="I accept full liability for the quality and safety of this product and acknowledge that Covid Care Package does not guarantee the accuracy or completeness of any postings."
 							required
 							onChange={this.handleTerms}
 						/>
-						<Item.Content>
+						{/* <Item.Content>
 							<Item.Description
 								as="p"
 								content="I accept full liability for the quality and safety of this product and acknowledge that Covid Care Package does not guarantee the accuracy or completeness of any postings."
 								style={{ margin: '15px 0' }}
 							/>
-						</Item.Content>
+						</Item.Content> */}
 
 						<Modal.Actions>
 							<Form.Button open={false} primary type="submit">
