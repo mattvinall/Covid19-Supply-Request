@@ -199,7 +199,7 @@ class FormModal extends Component {
 						<Item.Content>
 							<Item.Description
 								as="p"
-								content="I accept full liability for the quality and safety of this product and acknowledge that [Website name] does not guarantee the accuracy or completeness of any postings."
+								content="I accept full liability for the quality and safety of this product and acknowledge that Covid Care Package does not guarantee the accuracy or completeness of any postings."
 								style={{ margin: '15px 0' }}
 							/>
 						</Item.Content>

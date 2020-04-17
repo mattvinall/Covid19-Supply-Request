@@ -29,7 +29,7 @@ class Navigation extends Component {
 	render() {
 		return (
 			<Container>
-				<Header as="h1" content="COVID-19 Supply" textAlign="center" />
+				<Header as="h1" content="COVID-19 Care Package" textAlign="center" />
 				<Segment>
 					<Grid>
 						<Grid.Row style={{ display: 'flex' }}>
