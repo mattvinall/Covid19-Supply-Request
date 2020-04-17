@@ -19,7 +19,7 @@ const ItemDetail = (props) => {
 									}}
 									as="h3"
 								>
-									Requested : <Icon as="i" name="medkit" /> {props.item.supplyType} x{' '}
+									{props.item.supplyType} x
 									{props.item.quantity}
 								</Item.Header>
 							</Item.Content>
@@ -37,7 +37,7 @@ const ItemDetail = (props) => {
 									}}
 									as="h4"
 								>
-									<Icon as="i" name="hospital" /> {props.item.organization}, {props.item.department}
+									Requested by: {props.item.organization}, {props.item.department}
 								</Item.Header>
 							</Item.Content>
 						</Item.Group>
