@@ -17,23 +17,27 @@ class App extends Component {
 			searchTerm: '', // search text from nav
 			isOpen: false,
 			db: null,
-			selectedItem: null
+			selectedItem: null,
+			readError: null
 		};
 	}
 
 	componentDidMount() {
-		const data = [];
 		// const itemType = [];
 		const db = firebase.firestore();
 		this.setState({ db: db });
-		db.collection('supply_items').get().then((snapshot) => {
-			snapshot.docs.forEach((doc) => {
-				data.push(doc.data());
-				this.setState({
-					data
-				});
-			});
-		});
+
+		db.collection('supply_items').onSnapshot(
+			snapshot => {
+			const data = this.state.data
+			  snapshot.docChanges().forEach(change => {
+				  data.push(change.doc.data())
+			  })
+			  this.setState(data);
+
+			}
+		)
+
 	}
 
 	updateSearchTerm = (searchTerm) => {
@@ -57,7 +61,7 @@ class App extends Component {
 							<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
 						</div>
 						<Divider vertical />
-						<div class="col-lg-8">
+						<div className="col-lg-8">
 							{selectedItem && <ItemDetail className="col-lg-12" item={selectedItem} />}
 						</div>
 					</Segment>
