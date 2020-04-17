@@ -34,7 +34,6 @@ class App extends Component {
 				  data.push(change.doc.data())
 			  })
 			  this.setState(data);
-
 			}
 		)
 
