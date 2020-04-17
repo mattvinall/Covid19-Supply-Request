@@ -11,13 +11,14 @@ const ItemDetail = (props) => {
 							<Item.Header
 								style={{
 									fontWeight: 500,
-									fontSize: '1.6rem',
+									fontSize: '2.2rem',
 									paddingBottom: '5px'
 									// borderBottom: '1px solid #bcbec0'
 								}}
 								as="h3"
 							>
-								<Icon as="i" name="medkit" /> {props.item.supplyType} x {props.item.quantity}
+								Requested : <Icon as="i" name="medkit" /> {props.item.supplyType} x{' '}
+								{props.item.quantity}
 							</Item.Header>
 						</Item.Content>
 					</Item.Group>
@@ -28,7 +29,7 @@ const ItemDetail = (props) => {
 							<Item.Header
 								style={{
 									fontWeight: 400,
-									fontSize: '1.4rem',
+									fontSize: '1.8rem',
 									paddingBottom: '5px'
 									// borderBottom: '1px solid #bcbec0'
 								}}
