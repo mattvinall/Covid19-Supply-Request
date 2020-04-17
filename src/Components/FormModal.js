@@ -131,7 +131,6 @@ class FormModal extends Component {
 							name="description"
 							placeholder="Tell us anything else about your request/offer. For example, brand/model, delivery instructions, etc."
 							onChange={this.handleChange}
-							required
 						/>
 						<Form.Group widths="equal">
 							<Form.Input
