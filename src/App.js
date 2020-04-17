@@ -31,7 +31,7 @@ class App extends Component {
 			snapshot => {
 			const data = this.state.data
 			  snapshot.docChanges().forEach(change => {
-				  data.push(change.doc.data())
+				  data.unshift(change.doc.data())
 			  })
 			  this.setState(data);
 			}
