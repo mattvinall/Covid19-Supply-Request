@@ -5,13 +5,30 @@ const ItemDetail = (props) => {
 	return (
 		<Grid className="details-view" key={props.item.id}>
 			<Grid.Row>
-				<Grid.Column width={16}>
-					<Item.Group>
+				<Grid.Column width={16} style={{ paddingBottom: '25px' }}>
+					<Item.Group style={{ textAlign: 'center', borderBottom: '1px solid #bcbec0' }}>
 						<Item.Content style={{ textAlign: 'center' }}>
 							<Item.Header
 								style={{
 									fontWeight: 500,
 									fontSize: '1.6rem',
+									paddingBottom: '5px'
+									// borderBottom: '1px solid #bcbec0'
+								}}
+								as="h3"
+							>
+								<Icon as="i" name="medkit" /> {props.item.supplyType} x {props.item.quantity}
+							</Item.Header>
+						</Item.Content>
+					</Item.Group>
+				</Grid.Column>
+				<Grid.Column width={16}>
+					<Item.Group style={{ textAlign: 'center' }}>
+						<Item.Content style={{ textAlign: 'center' }}>
+							<Item.Header
+								style={{
+									fontWeight: 400,
+									fontSize: '1.4rem',
 									paddingBottom: '5px'
 									// borderBottom: '1px solid #bcbec0'
 								}}
@@ -55,17 +72,6 @@ const ItemDetail = (props) => {
 								<Icon as="i" name="phone" />Phone:{' '}
 								<a href={`tel:${props.item.requestor_phone}`}>{props.item.requestor_phone}</a>
 							</Item.Meta>
-							<Item.Meta
-								as="h3"
-								style={{
-									fontSize: '1.3rem',
-									fontWeight: 400,
-									borderBottom: '1px dotted #bcbec0'
-								}}
-							>
-								<Icon as="i" name="mail" />Email:
-								<a href={`mailto:${props.item.requestor_email}`}>{props.item.requestor_email}</a>
-							</Item.Meta>
 						</Item.Content>
 					</Item.Group>
 				</Grid.Column>
@@ -80,28 +86,9 @@ const ItemDetail = (props) => {
 									borderBottom: '1px dotted #bcbec0'
 								}}
 							>
-								<Icon as="i" name="medkit" /> Supply Type: {props.item.supplyType}
+								<Icon as="i" name="mail" />Email:
+								<a href={`mailto:${props.item.requestor_email}`}>{props.item.requestor_email}</a>
 							</Item.Meta>
-							<Item.Meta
-								as="h3"
-								style={{
-									fontSize: '1.3rem',
-									fontWeight: 400,
-									borderBottom: '1px dotted #bcbec0'
-								}}
-							>
-								Quantity
-								<Icon as="i" name="times" />
-								{props.item.quantity}
-							</Item.Meta>
-							<Item.Meta
-								as="h3"
-								style={{
-									fontSize: '1.3rem',
-									fontWeight: 400,
-									borderBottom: '1px dotted #bcbec0'
-								}}
-							/>
 						</Item.Content>
 					</Item.Group>
 				</Grid.Column>

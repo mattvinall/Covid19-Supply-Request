@@ -20,14 +20,6 @@
 	justify-content: space-around;
 }
 
-.col-xs-12 {
-	width: 100%;
-}
-
-.col-xs-4 {
-	width: 33.33%;
-}
-
 .col-lg-4 {
 	width: 33.33%;
 	padding-top: 15px;
@@ -75,9 +67,9 @@
 	border-right: 10px solid white !important;
 }
 
-.details-view h3.meta:last-child {
+/* .details-view h3.meta:last-child {
 	border-bottom: none !important;
-}
+} */
 
 /* divider css */
 .ui.vertical.divider {
