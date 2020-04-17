@@ -31,7 +31,6 @@ class App extends Component {
 			snapshot => {
 			const data = this.state.data
 			  snapshot.docChanges().forEach(change => {
-				  console.log(change.doc.data());
 				  data.push(change.doc.data())
 			  })
 			  this.setState(data);
@@ -53,7 +52,6 @@ class App extends Component {
 
 	render() {
 		const { db, data, selectedItem } = this.state;
-		console.log('state', data);
 		return (
 			<div className="app-container">
 				<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
