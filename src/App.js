@@ -61,7 +61,7 @@ class App extends Component {
 						</div>
 						<Divider vertical />
 						<div className="col-lg-8">
-							{selectedItem && <ItemDetail className="col-lg-12" item={selectedItem} />}
+							<ItemDetail className="col-lg-12" item={selectedItem} />
 						</div>
 					</Segment>
 				</Container>

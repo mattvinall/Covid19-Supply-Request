@@ -86,6 +86,11 @@
 	transform: translateX(-50%);
 }
 
+
+h5.item-detail-empty {
+	text-align: center;
+	margin-top: 20px;
+}
 .app-container {
 	background: rgb(255, 255, 255);
 	background: linear-gradient(
