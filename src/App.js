@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Nav';
-import Services from './Components/Services';
-// import FormModal from './Components/FormModal';
+import List from './Components/List';
+import ItemDetail from './Components/itemDetail';
+import { Container, Segment, Divider } from 'semantic-ui-react';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 import firebase from './firebase';
@@ -14,31 +15,28 @@ class App extends Component {
 			data: [], // date from firestore
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
-			isOpen: false
+			isOpen: false,
+			db: null,
+			selectedItem: null,
+			readError: null
 		};
 	}
 
 	componentDidMount() {
-		const data = [];
 		// const itemType = [];
 		const db = firebase.firestore();
+		this.setState({ db: db });
 
-		db.collection('supply_items').get().then((snapshot) => {
-			snapshot.docs.forEach((doc) => {
-				data.push(doc.data());
-				this.setState({
-					data
-				});
-			});
-		});
-		// db.collection('item_type').get().then((snapshot) => {
-		// 	snapshot.docs.forEach((doc) => {
-		// 		itemType.push(doc.data());
-		// 		this.setState({
-		// 			itemType
-		// 		});
-		// 	});
-		// });
+		db.collection('supply_items').onSnapshot(
+			snapshot => {
+			const data = this.state.data
+			  snapshot.docChanges().forEach(change => {
+				  data.unshift(change.doc.data())
+			  })
+			  this.setState(data);
+			}
+		)
+
 	}
 
 	updateSearchTerm = (searchTerm) => {
@@ -47,18 +45,29 @@ class App extends Component {
 		});
 	};
 
+	selectItem = (item) => {
+		this.setState({ selectedItem: item });
+	};
+
 	render() {
+		const { db, data, selectedItem } = this.state;
 		return (
-			<div className="app-container flex-column">
-				<Navigation date={this.state.data} updateSearchTerm={this.updateSearchTerm} />
-				<Services data={this.state.data} />
+			<div className="app-container">
+				<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
+				<Container>
+					<Segment className="flex-container">
+						<div className="col-lg-4">
+							<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
+						</div>
+						<Divider vertical />
+						<div className="col-lg-8">
+							<ItemDetail className="col-lg-12" item={selectedItem} />
+						</div>
+					</Segment>
+				</Container>
 			</div>
 		);
 	}
 }
-
-// filter offering / requesting - chceks each item in the array. Check if the key called item = they key called itemTypeSelectd (in state)
-
-// update app js state from nav and pass that searchTerm down to the list component as well as the list of either offering or reuqesting
 
 export default App;

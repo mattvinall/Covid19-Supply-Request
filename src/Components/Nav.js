@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { Form, Icon, Header, Grid, Segment, Container } from 'semantic-ui-react';
+import { Form, Header, Grid, Segment, Container } from 'semantic-ui-react';
 import FormModal from './FormModal';
 
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isOpen: false
+			// isOpen: false
 		};
 	}
 
 	handleChange = (e) => {
 		const { id, value } = e.target;
-		// console.log(this.props.state);
 		this.setState({
 			[id]: value
 		});
@@ -27,16 +26,10 @@ class Navigation extends Component {
 		}));
 	};
 
-	modalClose = (isOpen) => {
-		this.setState({
-			isOpen
-		});
-	};
-
 	render() {
 		return (
 			<Container>
-				<Header as="h1" content="COVID-19 Supply" textAlign="center" />
+				<Header as="h1" content="COVID-19 Care Package" textAlign="center" />
 				<Segment>
 					<Grid>
 						<Grid.Row style={{ display: 'flex' }}>
@@ -44,22 +37,20 @@ class Navigation extends Component {
 								<Form>
 									<Form.Input
 										id="searchTerm"
-										value={this.state.searchTerm}
+										value={this.props.searchTerm}
 										onChange={this.handleChange}
 										fluid
-										label="search"
-										placeholder="search items"
+										label="Search"
+										placeholder="Search Item"
 									/>
 								</Form>
 							</Grid.Column>
 							<Grid.Column width="10" textAlign="right" style={{ margin: 'auto' }}>
-								{/* <Icon onClick={this.handleClick} name="plus" size="small" /> */}
-								<FormModal />
+								<FormModal db={this.props.db} />
 							</Grid.Column>
 						</Grid.Row>
 					</Grid>
 				</Segment>
-				{/* {this.state.isOpen ? <FormModal modalClose={this.modalClose} /> : null} */}
 			</Container>
 		);
 	}
