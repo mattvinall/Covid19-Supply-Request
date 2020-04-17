@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Form, Icon, Message } from 'semantic-ui-react';
+import firebase from './../firebase';
+
 
 const options = [
 	{ key: 'sm', text: 'Surgical Masks', value: 'Surgical Masks' },
@@ -70,7 +72,8 @@ class FormModal extends Component {
 			department: this.state.department,
 			requestor_email: this.state.requestor_email,
 			requestor_phone: this.state.requestor_phone,
-			id: this.state.id
+			id: this.state.id,
+			created: firebase.firestore.FieldValue.serverTimestamp()
 		});
 
 		// reset state back to original state once form is submitted
