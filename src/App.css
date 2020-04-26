@@ -67,10 +67,6 @@
 	border-right: 10px solid white !important;
 }
 
-/* .details-view h3.meta:last-child {
-	border-bottom: none !important;
-} */
-
 /* divider css */
 .ui.vertical.divider {
 	position: absolute;
@@ -101,3 +97,5 @@ h5.item-detail-empty {
 		rgba(110, 210, 231, 1) 100%
 	);
 }
+
+

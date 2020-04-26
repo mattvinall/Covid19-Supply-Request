@@ -31,7 +31,10 @@ class App extends Component {
 			snapshot => {
 			const data = this.state.data
 			  snapshot.docChanges().forEach(change => {
-				  data.unshift(change.doc.data())
+				  if (change.type === "added") {
+					data.unshift(change.doc.data())
+
+				  }
 			  })
 			  this.setState(data);
 			}
