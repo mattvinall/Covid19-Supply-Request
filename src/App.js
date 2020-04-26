@@ -59,13 +59,11 @@ class App extends Component {
 				<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
 				<Container>
 					<Segment className="flex-container">
-						<div className="col-lg-4">
-							<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
-						</div>
-						<Divider vertical />
+						<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
+						{/* <Divider vertical />
 						<div className="col-lg-8">
 							<ItemDetail className="col-lg-12" item={selectedItem} />
-						</div>
+						</div> */}
 					</Segment>
 				</Container>
 			</div>
