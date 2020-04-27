@@ -17,7 +17,10 @@ const List = (props) => {
 						
 					</div>
 				</Item.Content>
-				{data.filter((data) => data.supplyType.includes(searchTerm)).map((item, index) => {
+				{data.filter((data) => {
+					const searchRegExp = new RegExp(searchTerm, "i")
+					return searchRegExp.test(data.supplyType)
+				}).map((item, index) => {
 					return (
 						<Item.Content key={index} className={'row item-border border-right'}>
 							<Item.Header as="h5" className="four wide column">{item.supplyType}</Item.Header>
