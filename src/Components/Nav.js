@@ -11,11 +11,7 @@ class Navigation extends Component {
 	}
 
 	handleChange = (e) => {
-		const { id, value } = e.target;
-		this.setState({
-			[id]: value
-		});
-
+		const { value } = e.target;
 		this.props.updateSearchTerm(value);
 	};
 
