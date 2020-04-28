@@ -1,5 +1,18 @@
 import React, { Fragment } from 'react';
 import { Item, Icon } from 'semantic-ui-react';
+import firebase from './../firebase';
+
+const db = firebase.firestore();
+
+function handleDelete (){
+	db.collection('supply_items').doc('0u3X11m31H1lLt3aTcOy').delete();
+}
+
+function handleUpdate (){
+		db.collection('supply_items').doc('0u3X11m31H1lLt3aTcOy').update({
+
+		});
+}
 
 const List = (props) => {
 	const { data, searchTerm } = props;
@@ -33,7 +46,7 @@ const List = (props) => {
 							<div className="one wide column" onClick={() => props.selectItem(item)} style={{ cursor: 'pointer' }}>
 								<Icon color="blue" name='edit' />
 							</div>
-							<div className="one wide column" onClick={() => props.selectItem(item)} style={{ cursor: 'pointer' }}>
+							<div className="one wide column" onClick={() => handleDelete()} style={{ cursor: 'pointer' }}>
 								<Icon color="red" name='delete' />
 							</div>
 						</Item.Content>
