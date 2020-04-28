@@ -4,8 +4,9 @@ import firebase from './../firebase';
 
 const db = firebase.firestore();
 
-function handleDelete (){
-	db.collection('supply_items').doc('0u3X11m31H1lLt3aTcOy').delete();
+const handleDelete = (item) => {
+	console.log(item);
+	// db.collection('supply_items').doc('0u3X11m31H1lLt3aTcOy').delete();
 }
 
 function handleUpdate (){
@@ -46,7 +47,7 @@ const List = (props) => {
 							<div className="one wide column" onClick={() => props.selectItem(item)} style={{ cursor: 'pointer' }}>
 								<Icon color="blue" name='edit' />
 							</div>
-							<div className="one wide column" onClick={() => handleDelete()} style={{ cursor: 'pointer' }}>
+							<div className="one wide column" onClick={() => handleDelete(item)} style={{ cursor: 'pointer' }}>
 								<Icon color="red" name='delete' />
 							</div>
 						</Item.Content>
