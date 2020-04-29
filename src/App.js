@@ -1,6 +1,6 @@
 // REACT
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 // COMPONENTS
 import Navigation from './Components/Nav';
@@ -57,18 +57,29 @@ class App extends Component {
 		this.setState({ selectedItem: item });
 	};
 
+	login;
+
 	render() {
-		const { db, data, selectedItem, isAdmin } = this.state;
+		const { db, data, isLoggedIn } = this.state;
 		return (
 			<Fragment>
-				<div className="app-container">
-					<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
-					<Container>
-						<Segment className="flex-container">
-							<List searchTerm={this.state.searchTerm} data={data} db={db} selectItem={this.selectItem} />
-						</Segment>
-					</Container>
-				</div>
+				{!isLoggedIn ? (
+					<Login />
+				) : (
+					<div className="app-container">
+						<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
+						<Container>
+							<Segment className="flex-container">
+								<List
+									searchTerm={this.state.searchTerm}
+									data={data}
+									db={db}
+									selectItem={this.selectItem}
+								/>
+							</Segment>
+						</Container>
+					</div>
+				)}
 			</Fragment>
 		);
 	}
