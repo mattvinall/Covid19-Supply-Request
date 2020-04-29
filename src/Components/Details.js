@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Item, Icon } from 'semantic-ui-react';
-// import List from './List.js';
 
 const Details = (props) => {
 	return props.data.map((item, index) => {

@@ -82,7 +82,6 @@
 	transform: translateX(-50%);
 }
 
-
 h5.item-detail-empty {
 	text-align: center;
 	margin-top: 20px;
@@ -98,4 +97,47 @@ h5.item-detail-empty {
 	);
 }
 
+h1 {
+	font-size: 2.8rem !important;
+	color: black;
+	font-family: 'Arial';
+	margin-bottom: 50px !important;
+}
 
+.login {
+	height: 100vh;
+	background: lightskyblue;
+	text-align: center;
+	position: relative;
+}
+
+.login button {
+	background: none;
+	color: white;
+	border: none;
+	text-transform: uppercase;
+	font-size: 3rem;
+	margin: 0 20px;
+	border-bottom: 4px solid yellow;
+	z-index: 10;
+	position: relative;
+}
+
+.loginContainer {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+}
+
+.login button:focus {
+	color: #eee;
+}
+
+.particles {
+	position: absolute;
+	height: 90%;
+	width: 100%;
+	z-index: 1;
+}
