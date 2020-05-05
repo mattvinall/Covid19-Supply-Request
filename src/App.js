@@ -11,7 +11,7 @@ import Login from './Components/Login';
 import './App.css';
 
 // LIBRARIES
-import { Container, Segment } from 'semantic-ui-react';
+import { Container, Segment, Button } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import firebase from './firebase';
 
@@ -34,15 +34,15 @@ class App extends Component {
 		const db = firebase.firestore();
 		this.setState({ db });
 
-		// db.collection('supply_items').onSnapshot((snapshot) => {
-		// 	const data = [ ...this.state.data ];
-		// 	snapshot.docChanges().forEach((change) => {
-		// 		if (change.type === 'added') {
-		// 			data.unshift(change.doc.data());
-		// 		}
-		// 	});
-		// 	this.setState(data);
-		// });
+		db.collection('supply_items').onSnapshot((snapshot) => {
+			const data = this.state.data;
+			snapshot.docChanges().forEach((change) => {
+				if (change.type === 'added') {
+					data.unshift(change.doc.data());
+				}
+			});
+			this.setState(data);
+		});
 
 		// check domain
 		// db.collection('hospitals').get().then((snapshot) => {
@@ -78,6 +78,18 @@ class App extends Component {
 		});
 	};
 
+	signOut = () => {
+		firebase
+			.auth()
+			.signOut()
+			.then(function() {
+				// Sign-out successful.
+			})
+			.catch(function(error) {
+				// An error happened.
+			});
+	};
+
 	render() {
 		const { db, data, user } = this.state;
 		return (
@@ -86,6 +98,11 @@ class App extends Component {
 					<Login authListener={this.authListener} />
 				) : (
 					<div className="app-container">
+						<Container>
+							<Button secondary onClick={this.signOut}>
+								Logout
+							</Button>
+						</Container>
 						<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
 						<Container>
 							<Segment className="flex-container">
