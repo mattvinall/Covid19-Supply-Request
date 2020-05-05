@@ -23,11 +23,9 @@ class App extends Component {
 			data: [], // date from firestore
 			itemType: [], // master list of item types
 			searchTerm: '', // search text from nav
-			isOpen: false,
 			db: null,
 			selectedItem: null,
-			readError: null,
-			isLoggedIn: null
+			user: null
 		};
 	}
 
@@ -36,15 +34,32 @@ class App extends Component {
 		const db = firebase.firestore();
 		this.setState({ db });
 
-		db.collection('supply_items').onSnapshot((snapshot) => {
-			const data = this.state.data;
-			snapshot.docChanges().forEach((change) => {
-				if (change.type === 'added') {
-					data.unshift(change.doc.data());
-				}
-			});
-			this.setState(data);
-		});
+		// db.collection('supply_items').onSnapshot((snapshot) => {
+		// 	const data = [ ...this.state.data ];
+		// 	snapshot.docChanges().forEach((change) => {
+		// 		if (change.type === 'added') {
+		// 			data.unshift(change.doc.data());
+		// 		}
+		// 	});
+		// 	this.setState(data);
+		// });
+
+		// check domain
+		// db.collection('hospitals').get().then((snapshot) => {
+		// 	const values = snapshot.docs.map(flattenDoc);
+		// });
+
+		// check hospitals collection - go into trillium and grab subcollection of supply items
+		// db.collection('hospitals').doc('thp.ca').get().then((snapshot) => {
+		// 	const values = snapshot.docs.map(flattenDoc);
+		// 	console.table(values);
+		// });
+
+		// const flattenDoc = (doc) => {
+		// 	return { id: doc.id, ...doc.data() };
+		// };
+
+		this.authListener();
 	}
 
 	updateSearchTerm = (searchTerm) => {
@@ -57,14 +72,18 @@ class App extends Component {
 		this.setState({ selectedItem: item });
 	};
 
-	login;
+	authListener = () => {
+		firebase.auth().onAuthStateChanged((user) => {
+			user ? this.setState({ user }) : this.setState({ user: null });
+		});
+	};
 
 	render() {
-		const { db, data, isLoggedIn } = this.state;
+		const { db, data, user } = this.state;
 		return (
 			<Fragment>
-				{!isLoggedIn ? (
-					<Login />
+				{!user ? (
+					<Login authListener={this.authListener} />
 				) : (
 					<div className="app-container">
 						<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
@@ -86,3 +105,5 @@ class App extends Component {
 }
 
 export default App;
+
+// auth - when user logs in (front end parse out domain (i.e. trillium.ca) and check backend to see if email matches domain allow them to access data for their hospital)
