@@ -57,7 +57,7 @@ class Login extends Component {
 			return result;
 		});
 
-		return validatedYN
+		return validatedYN;
 	};
 
 	// send sign in link
@@ -79,6 +79,7 @@ class Login extends Component {
 					console.log('send login link error', error.code);
 				});
 		} else {
+			alert('please enter a valid email');
 			console.log('thou shall not pass');
 		}
 	};
