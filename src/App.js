@@ -95,12 +95,15 @@ class App extends Component {
 		return (
 			<Fragment>
 				{!user ? (
-					<Login authListener={this.authListener} />
+					<Login resetPassword={this.resetPassword} />
 				) : (
 					<div className="app-container">
 						<Container>
 							<Button secondary onClick={this.signOut}>
 								Logout
+							</Button>
+							<Button secondary onClick={this.props.resetPassword}>
+								Reset Password
 							</Button>
 						</Container>
 						<Navigation db={db} data={data} updateSearchTerm={this.updateSearchTerm} />
@@ -122,5 +125,3 @@ class App extends Component {
 }
 
 export default App;
-
-// auth - when user logs in (front end parse out domain (i.e. trillium.ca) and check backend to see if email matches domain allow them to access data for their hospital)
