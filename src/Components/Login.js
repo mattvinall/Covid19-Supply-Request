@@ -51,16 +51,19 @@ class Login extends Component {
 	validateEmail = async (email) => {
 		let domain = email.split('@').pop();
 		console.log(domain);
-		await db.collection('hospitals').doc(domain).get().then((snapshot) => {
+		let validatedYN = await db.collection('hospitals').doc(domain).get().then((snapshot) => {
 			const result = snapshot.exists ? true : false;
 			console.log(result);
 			return result;
 		});
+
+		return validatedYN
 	};
 
 	// send sign in link
 	sendLoginLink = async (email, actionCodeSettings) => {
-		if (await this.validateEmail(email)) {
+		let result = await this.validateEmail(email);
+		if (result) {
 			console.log('validated');
 			firebase
 				.auth()
