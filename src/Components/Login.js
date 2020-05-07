@@ -42,24 +42,44 @@ class Login extends Component {
 			email: '',
 			password: '',
 			error: '',
-			showModal: false
+			openModal: false,
+			errors: []
 		};
 	}
 
-	componentDidMount() {
-		this.signIn();
-	}
+	// componentDidMount() {
+	// 	this.signIn();
+	// }
 
 	validateEmail = async (email) => {
-		let domain = email.split('@').pop();
-		console.log(domain);
-		let validatedYN = await db.collection('hospitals').doc(domain).get().then((snapshot) => {
-			const result = snapshot.exists ? true : false;
-			console.log(result);
-			return result;
-		});
+		if (email) {
+			let domain = email.split('@').pop();
+			console.log(domain);
+			let validatedYN = await db.collection('hospitals').doc(domain).get().then((snapshot) => {
+				const result = snapshot.exists ? true : false;
 
-		return validatedYN;
+				return result;
+			});
+			return validatedYN;
+		} else {
+			const errors = [];
+
+			if (email.length < 5) {
+				errors.push('Email should be at least 5 charcters long');
+			}
+			if (email.split('').filter((x) => x === '@').length !== 1) {
+				errors.push('Email should contain a @');
+			}
+			if (email.indexOf('.') === -1) {
+				errors.push('Email should contain at least one dot');
+			}
+
+			return Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: `${errors}`
+			});
+		}
 	};
 
 	// send sign in link
@@ -123,18 +143,16 @@ class Login extends Component {
 		}
 	};
 
+	handleSubmit = (e) => {
+		e.preventDefault();
+
+		this.validateEmail(this.state.email);
+	};
+
 	handleChange = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
 		});
-	};
-
-	openModal = () => {
-		this.setState({ openModal: true });
-	};
-
-	closeModal = () => {
-		this.setState({ openModal: false, email: '' });
 	};
 
 	render() {
@@ -165,7 +183,7 @@ class Login extends Component {
 								<Form.Button
 									onClick={() => {
 										this.sendLoginLink(this.state.email, actionCodeSettings);
-										this.closeModal();
+										// this.closeModal();
 									}}
 									primary
 									type="submit"
