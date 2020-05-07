@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../firebase';
 import Particles from 'react-particles-js';
 import { Modal, Form, ModalContent } from 'semantic-ui-react';
+import Swal from 'sweetalert2';
 
 const particleStyle = {
 	particles: {
@@ -40,7 +41,8 @@ class Login extends Component {
 		this.state = {
 			email: '',
 			password: '',
-			error: ''
+			error: '',
+			showModal: false
 		};
 	}
 
@@ -65,22 +67,23 @@ class Login extends Component {
 		let result = await this.validateEmail(email);
 		if (result) {
 			console.log('validated');
-			firebase
-				.auth()
-				.sendSignInLinkToEmail(email, actionCodeSettings)
-				.then(function() {
-					// The link was successfully sent. Inform the user.
-					// Save the email locally so you don't need to ask the user for it again
-					// if they open the link on the same device.
-					window.localStorage.setItem('emailForSignIn', email);
-				})
-				.catch(function(error) {
-					// Some error occurred, you can inspect the code: error.code
-					console.log('send login link error', error.code);
+			firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings).then(function() {
+				Swal.fire({
+					icon: 'success',
+					title: 'Success!',
+					text: 'check your email and confirm by pressing the link provided to get access to the application.'
 				});
+				// The link was successfully sent. Inform the user.
+				// Save the email locally so you don't need to ask the user for it again
+				// if they open the link on the same device.
+				window.localStorage.setItem('emailForSignIn', email);
+			});
 		} else {
-			alert('please enter a valid email');
-			console.log('thou shall not pass');
+			return Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'You do not have access!'
+			});
 		}
 	};
 
@@ -126,6 +129,14 @@ class Login extends Component {
 		});
 	};
 
+	openModal = () => {
+		this.setState({ openModal: true });
+	};
+
+	closeModal = () => {
+		this.setState({ openModal: false, email: '' });
+	};
+
 	render() {
 		return (
 			<div className="login">
@@ -133,7 +144,7 @@ class Login extends Component {
 				<div className="wrapper loginContainer">
 					<h1>[Hospital Name] Covid Inventory Management</h1>
 					<React.Fragment>
-						<Modal trigger={<button>Login</button>}>
+						<Modal trigger={<button onClick={() => this.openModal}>Login</button>}>
 							<Modal.Header>Login</Modal.Header>
 							<ModalContent scrolling>
 								<Form onSubmit={this.handleSubmit}>
@@ -152,12 +163,14 @@ class Login extends Component {
 							</ModalContent>
 							<Modal.Actions>
 								<Form.Button
-									onClick={() => this.sendLoginLink(this.state.email, actionCodeSettings)}
-									open={false}
+									onClick={() => {
+										this.sendLoginLink(this.state.email, actionCodeSettings);
+										this.closeModal();
+									}}
 									primary
 									type="submit"
 								>
-									Submit
+									Login
 								</Form.Button>
 							</Modal.Actions>
 						</Modal>
